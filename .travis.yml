@@ -29,7 +29,7 @@ deploy:
   strategy: git
   provider: pages
   skip_cleanup: true            # 跳过清理
-  token: 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              # GitHub Token 变量
+  token: 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              # GitHub Token 变量
   keep_history: true            # 保持推送记录，以增量提交的方式
   local_dir: public             # 需要推送到 gh-pages 分支的静态文件目录
   target_branch: gh-pages       # 推送的目标文件夹 local_dir(public) -> gh-pages 分支
