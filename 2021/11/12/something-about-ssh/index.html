@@ -20,15 +20,28 @@
     var CONFIG = {"hostname":"www.fradyspace.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FRADY SPACE">
-<meta property="og:url" content="https://www.fradyspace.com/archives/2021/11/index.html">
+  <meta name="description" content="最近在项目中用到了git+ssh的形式去安装npm包  开发时很爽～部署时，CI有点问题，但运维也解决了～就是开发时，老是有人问，为啥npm install报错了？ 诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～ 直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：  好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！但因为需要进行IO交互，所以npm instal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh的三俩事">
+<meta property="og:url" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/index.html">
 <meta property="og:site_name" content="FRADY SPACE">
+<meta property="og:description" content="最近在项目中用到了git+ssh的形式去安装npm包  开发时很爽～部署时，CI有点问题，但运维也解决了～就是开发时，老是有人问，为啥npm install报错了？ 诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～ 直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：  好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！但因为需要进行IO交互，所以npm instal">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/img.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/error_code.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/ssh_verify.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/script_from_an_article.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/ssh-keyscan.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/success.png">
+<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/perfect.png">
+<meta property="article:published_time" content="2021-11-12T13:52:33.000Z">
+<meta property="article:modified_time" content="2021-11-12T09:15:43.800Z">
 <meta property="article:author" content="Frady Wang">
+<meta property="article:tag" content="ssh npm NodeJS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/img.png">
 
-<link rel="canonical" href="https://www.fradyspace.com/archives/2021/11/">
+<link rel="canonical" href="https://www.fradyspace.com/2021/11/12/something-about-ssh/">
 
 
 <script id="page-configurations">
@@ -36,12 +49,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | FRADY SPACE</title>
+  <title>ssh的三俩事 | FRADY SPACE</title>
   
 
 
@@ -154,70 +167,118 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.com/2021/11/12/something-about-ssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Frady Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRADY SPACE">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ssh的三俩事
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-12 13:52:33 / 修改时间：09:15:43" itemprop="dateCreated datePublished" datetime="2021-11-12T13:52:33+00:00">2021-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <p>最近在项目中用到了git+ssh的形式去安装npm包</p>
+<p><img src="/2021/11/12/something-about-ssh/img.png" alt="img.png"></p>
+<p>开发时很爽～<br>部署时，CI有点问题，但运维也解决了～<br>就是开发时，老是有人问，为啥<code>npm install</code>报错了？</p>
+<p>诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～</p>
+<p>直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：</p>
+<p><img src="/2021/11/12/something-about-ssh/error_code.png"></p>
+<p>好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！<br>但因为需要进行IO交互，所以<code>npm install</code>的过程中等不到输入<code>yes</code>，于是就卡住了……</p>
+<p>可恶</p>
+<p>然后当时只想到通过这种形式给know_hosts增加校验</p>
+<p><img src="/2021/11/12/something-about-ssh/ssh_verify.png" alt="img.png"></p>
+<p>因为需要交互，所以没办法写成脚本放进npm scripts里</p>
+<p>……</p>
+<p>直到</p>
+<p>……</p>
+<p>我在找<a target="_blank" rel="noopener" href="https://sanonz.github.io/2020/deploy-a-hexo-blog-from-github-actions/">Hexo部署的GitHub Actions文章</a>时，意外看到了这个～</p>
+<p><img src="/2021/11/12/something-about-ssh/script_from_an_article.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>⬆️这！不就是我梦寐以求的么？</p>
+<p>让我们来看看～</p>
+<p><img src="/2021/11/12/something-about-ssh/ssh-keyscan.png"></p>
+<p>很好～</p>
+<p>来试试～</p>
+<p><img src="/2021/11/12/something-about-ssh/success.png"></p>
+<p>搞定！</p>
+<p>那么npm script可以这样写：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;secure-install&quot;</span>: <span class="string">&quot;ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts &amp;&amp; npm install&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-11-12T13:52:33+00:00"
-              content="2021-11-12">
-          11-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/12/something-about-ssh/" itemprop="url">
-            <span itemprop="name">ssh的三俩事</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-11-11T18:06:51+00:00"
-              content="2021-11-11">
-          11-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/11/11/first-post/" itemprop="url">
-            <span itemprop="name">Project Init</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p><img src="/2021/11/12/something-about-ssh/perfect.png"></p>
+<p>完美运行！</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh-npm-NodeJS/" rel="tag"># ssh npm NodeJS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/11/first-post/" rel="prev" title="Project Init">
+      <i class="fa fa-chevron-left"></i> Project Init
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 

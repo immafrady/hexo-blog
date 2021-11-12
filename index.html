@@ -120,17 +120,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">0</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">1</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">2</span></a>
 
   </li>
   </ul>
@@ -156,6 +156,103 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.com/2021/11/12/something-about-ssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Frady Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRADY SPACE">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/12/something-about-ssh/" class="post-title-link" itemprop="url">ssh的三俩事</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-12 13:52:33 / 修改时间：09:15:43" itemprop="dateCreated datePublished" datetime="2021-11-12T13:52:33+00:00">2021-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在项目中用到了git+ssh的形式去安装npm包</p>
+<p><img src="/2021/11/12/something-about-ssh/img.png" alt="img.png"></p>
+<p>开发时很爽～<br>部署时，CI有点问题，但运维也解决了～<br>就是开发时，老是有人问，为啥<code>npm install</code>报错了？</p>
+<p>诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～</p>
+<p>直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：</p>
+<p><img src="/2021/11/12/something-about-ssh/error_code.png"></p>
+<p>好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！<br>但因为需要进行IO交互，所以<code>npm install</code>的过程中等不到输入<code>yes</code>，于是就卡住了……</p>
+<p>可恶</p>
+<p>然后当时只想到通过这种形式给know_hosts增加校验</p>
+<p><img src="/2021/11/12/something-about-ssh/ssh_verify.png" alt="img.png"></p>
+<p>因为需要交互，所以没办法写成脚本放进npm scripts里</p>
+<p>……</p>
+<p>直到</p>
+<p>……</p>
+<p>我在找<a target="_blank" rel="noopener" href="https://sanonz.github.io/2020/deploy-a-hexo-blog-from-github-actions/">Hexo部署的GitHub Actions文章</a>时，意外看到了这个～</p>
+<p><img src="/2021/11/12/something-about-ssh/script_from_an_article.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure>
+
+<p>⬆️这！不就是我梦寐以求的么？</p>
+<p>让我们来看看～</p>
+<p><img src="/2021/11/12/something-about-ssh/ssh-keyscan.png"></p>
+<p>很好～</p>
+<p>来试试～</p>
+<p><img src="/2021/11/12/something-about-ssh/success.png"></p>
+<p>搞定！</p>
+<p>那么npm script可以这样写：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;secure-install&quot;</span>: <span class="string">&quot;ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts &amp;&amp; npm install&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/12/something-about-ssh/perfect.png"></p>
+<p>完美运行！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -191,7 +288,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-12 09:14:53" itemprop="dateModified" datetime="2021-11-12T09:14:53+00:00">2021-11-12</time>
+                <time title="修改时间：2021-11-12 09:15:43" itemprop="dateModified" datetime="2021-11-12T09:15:43+00:00">2021-11-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,15 +402,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
