@@ -1,6 +1,9 @@
 ---
 title: ssh的三俩事
-tags: ssh npm NodeJS
+tags:
+- ssh
+- npm
+- NodeJS
 categories: Coding
 date: 2021-11-12 13:52:33
 ---
