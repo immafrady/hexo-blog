@@ -5,45 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/hexo-blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hexo-blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hexo-blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hexo-blog/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/hexo-blog/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/hexo-blog/lib/font-awesome/css/font-awesome.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.fradyspace.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"immafrady.github.io","root":"/hexo-blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="最近在项目中用到了git+ssh的形式去安装npm包  开发时很爽～部署时，CI有点问题，但运维也解决了～就是开发时，老是有人问，为啥npm install报错了？ 诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～ 直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：  好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！但因为需要进行IO交互，所以npm instal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh的三俩事">
-<meta property="og:url" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/index.html">
+<meta property="og:url" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/index.html">
 <meta property="og:site_name" content="FRADY SPACE">
 <meta property="og:description" content="最近在项目中用到了git+ssh的形式去安装npm包  开发时很爽～部署时，CI有点问题，但运维也解决了～就是开发时，老是有人问，为啥npm install报错了？ 诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～ 直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：  好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！但因为需要进行IO交互，所以npm instal">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/img.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/error_code.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/ssh_verify.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/script_from_an_article.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/ssh-keyscan.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/success.png">
-<meta property="og:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/perfect.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/img.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/error_code.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/ssh_verify.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/script_from_an_article.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/ssh-keyscan.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/success.png">
+<meta property="og:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/perfect.png">
 <meta property="article:published_time" content="2021-11-12T13:52:33.000Z">
-<meta property="article:modified_time" content="2022-01-20T07:55:25.565Z">
+<meta property="article:modified_time" content="2022-01-25T07:56:50.928Z">
 <meta property="article:author" content="Frady Wang">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="npm">
 <meta property="article:tag" content="NodeJS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.fradyspace.com/2021/11/12/something-about-ssh/img.png">
+<meta name="twitter:image" content="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/img.png">
 
-<link rel="canonical" href="https://www.fradyspace.com/2021/11/12/something-about-ssh/">
+<link rel="canonical" href="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/">
 
 
 <script id="page-configurations">
@@ -105,7 +105,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/hexo-blog/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">FRADY SPACE</h1>
       <span class="logo-line-after"><i></i></span>
@@ -125,27 +125,27 @@
   <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+    <a href="/hexo-blog/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+    <a href="/hexo-blog/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
+    <a href="/hexo-blog/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
+    <a href="/hexo-blog/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">4</span></a>
+    <a href="/hexo-blog/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">4</span></a>
 
   </li>
   </ul>
@@ -176,10 +176,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.com/2021/11/12/something-about-ssh/">
+    <link itemprop="mainEntityOfPage" href="https://immafrady.github.io/hexo-blog/2021/11/12/something-about-ssh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/hexo-blog/images/avatar.jpg">
       <meta itemprop="name" content="Frady Wang">
       <meta itemprop="description" content="">
     </span>
@@ -206,7 +206,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-20 07:55:25" itemprop="dateModified" datetime="2022-01-20T07:55:25+00:00">2022-01-20</time>
+                <time title="修改时间：2022-01-25 07:56:50" itemprop="dateModified" datetime="2022-01-25T07:56:50+00:00">2022-01-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,7 +214,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+                  <a href="/hexo-blog/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
                 </span>
             </span>
 
@@ -230,34 +230,34 @@
 
       
         <p>最近在项目中用到了git+ssh的形式去安装npm包</p>
-<p><img src="/2021/11/12/something-about-ssh/img.png" alt="img.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/img.png" alt="img.png"></p>
 <p>开发时很爽～<br>部署时，CI有点问题，但运维也解决了～<br>就是开发时，老是有人问，为啥<code>npm install</code>报错了？</p>
 <p>诶～明明我已经把项目要配置ssh公钥的通知发下去了呀～</p>
 <p>直到我在另一位同事电脑前，观看到第一次安装时，卡在了这：</p>
-<p><img src="/2021/11/12/something-about-ssh/error_code.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/error_code.png"></p>
 <p>好家伙，突然想起，ssh在第一次和某个域名发生通信时，会有一次校验的！<br>但因为需要进行IO交互，所以<code>npm install</code>的过程中等不到输入<code>yes</code>，于是就卡住了……</p>
 <p>可恶</p>
 <p>然后当时只想到通过这种形式给know_hosts增加校验</p>
-<p><img src="/2021/11/12/something-about-ssh/ssh_verify.png" alt="img.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/ssh_verify.png" alt="img.png"></p>
 <p>因为需要交互，所以没办法写成脚本放进npm scripts里</p>
 <p>……</p>
 <p>直到</p>
 <p>……</p>
 <p>我在找<a target="_blank" rel="noopener" href="https://sanonz.github.io/2020/deploy-a-hexo-blog-from-github-actions/">Hexo部署的GitHub Actions文章</a>时，意外看到了这个～</p>
-<p><img src="/2021/11/12/something-about-ssh/script_from_an_article.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/script_from_an_article.png"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts</span><br></pre></td></tr></table></figure>
 
 <p>⬆️这！不就是我梦寐以求的么？</p>
 <p>让我们来看看～</p>
-<p><img src="/2021/11/12/something-about-ssh/ssh-keyscan.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/ssh-keyscan.png"></p>
 <p>很好～</p>
 <p>来试试～</p>
-<p><img src="/2021/11/12/something-about-ssh/success.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/success.png"></p>
 <p>搞定！</p>
 <p>那么npm script可以这样写：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;secure-install&quot;</span>: <span class="string">&quot;ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts &amp;&amp; npm install&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/11/12/something-about-ssh/perfect.png"></p>
+<p><img src="/hexo-blog/2021/11/12/something-about-ssh/perfect.png"></p>
 <p>完美运行！</p>
 
     </div>
@@ -268,9 +268,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/ssh/" rel="tag"># ssh</a>
-              <a href="/tags/npm/" rel="tag"># npm</a>
-              <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+              <a href="/hexo-blog/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/hexo-blog/tags/npm/" rel="tag"># npm</a>
+              <a href="/hexo-blog/tags/NodeJS/" rel="tag"># NodeJS</a>
           </div>
 
         
@@ -279,11 +279,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/11/first-post/" rel="prev" title="Project Init">
+    <a href="/hexo-blog/2021/11/11/first-post/" rel="prev" title="Project Init">
       <i class="fa fa-chevron-left"></i> Project Init
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/11/23/odd-things-happened/" rel="next" title="奇怪的事情发生了">
+    <a href="/hexo-blog/2021/11/23/odd-things-happened/" rel="next" title="奇怪的事情发生了">
       奇怪的事情发生了 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -350,27 +350,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Frady Wang"
-      src="/images/avatar.jpg">
+      src="/hexo-blog/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Frady Wang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/hexo-blog/archives/">
         
           <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+            <a href="/hexo-blog/categories/">
           
         <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+            <a href="/hexo-blog/tags/">
           
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
@@ -438,19 +438,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/hexo-blog/lib/anime.min.js"></script>
+  <script src="/hexo-blog/lib/velocity/velocity.min.js"></script>
+  <script src="/hexo-blog/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/hexo-blog/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/hexo-blog/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/hexo-blog/js/schemes/pisces.js"></script>
+
+
+<script src="/hexo-blog/js/next-boot.js"></script>
 
 
 
