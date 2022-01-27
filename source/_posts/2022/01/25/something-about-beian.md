@@ -103,7 +103,7 @@ categories:
 
 然后我就搜了一下什么是“域名注册证书”
 
-<img src="zhengshu.jpg" width="300px">
+![zhengshu](zhengshu.jpg)
 
 发现是这么一个玩意……
 
