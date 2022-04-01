@@ -9,7 +9,7 @@ description: ''
 keywords:
 author: Frady Wang
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -120,9 +120,9 @@ theme_config:
       enable: true
       icp: 粤ICP备2022035842号-1
       # The digit in the num of gongan beian.
-      gongan_id: AAAA
+      gongan_id:
       # The full num of gongan beian.
-      gongan_num: BBBB
+      gongan_num:
       # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
       gongan_icon_url: /images/beian.png
 
