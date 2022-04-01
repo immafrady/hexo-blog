@@ -102,6 +102,87 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+theme_config:
+  # Schemes
+  #scheme: Muse
+  #scheme: Mist
+  #scheme: Pisces
+  scheme: Gemini
+
+  # Dark Mode
+  darkmode: true
+
+  footer:
+    # Specify the date when the site was setup. If not defined, current year will be used.
+    since: 2021
+
+  # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
+  beian:
+    enable: true
+    icp: 粤ICP备18047464号-2
+    # The digit in the num of gongan beian.
+    gongan_id:
+    # The full num of gongan beian.
+    gongan_num:
+    # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
+    gongan_icon_url:
+
+  # Usage: `Key: /link/ || icon`
+  # Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-senstive.
+  # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
+  # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
+  # External url should start with http:// or https://
+  menu:
+    home: / || home
+    about: /about/ || user
+    tags: /tags/ || tags
+    categories: /categories/ || th
+    archives: /archives/ || archive
+    #schedule: /schedule/ || calendar
+    #sitemap: /sitemap.xml || sitemap
+    #commonweal: /404/ || heartbeat
+
+  # Enable / Disable menu icons / item badges.
+  menu_settings:
+    icons: true
+    badges: true
+
+  # Sidebar Avatar
+  avatar:
+    # Replace the default image and set the url here.
+    url: /images/avatar.jpg
+    # If true, the avatar will be dispalyed in circle.
+    rounded: false
+    # If true, the avatar will be rotated with the cursor.
+    rotated: false
+
+  # Social Links
+  # Usage: `Key: permalink || icon`
+  # Key is the link label showing to end users.
+  # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
+  social:
+    GitHub: https://github.com/immafrady || fab fa-github
+    E-Mail: mailto:immafrady@gmail.com || fa fa-envelope
+    Twitter: https://twitter.com/immafrady || fab fa-twitter
+    Instagram: https://instagram.com/immafrady || fab fa-instagram
+  social_icons:
+    enable: true
+    icons_only: false
+    transition: true
+
+  codeblock:
+    # Code Highlight theme
+    # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic
+    # See: https://github.com/chriskempson/tomorrow-theme
+    highlight_theme: night bright
+    # Add copy button on codeblock
+    copy_button:
+      enable: true
+      # Show text copy result.
+      show_result: false
+      # Available values: default | flat | mac
+      style:
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
