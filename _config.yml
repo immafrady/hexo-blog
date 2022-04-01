@@ -115,16 +115,16 @@ theme_config:
     # Specify the date when the site was setup. If not defined, current year will be used.
     since: 2021
 
-  # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
-  beian:
-    enable: true
-    icp: 粤ICP备2022035842号-1
-    # The digit in the num of gongan beian.
-    gongan_id:
-    # The full num of gongan beian.
-    gongan_num:
-    # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
-    gongan_icon_url:
+    # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
+    beian:
+      enable: true
+      icp: 粤ICP备2022035842号-1
+      # The digit in the num of gongan beian.
+      gongan_id: AAAA
+      # The full num of gongan beian.
+      gongan_num: BBBB
+      # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
+      gongan_icon_url: /images/beian.png
 
   # Usage: `Key: /link/ || icon`
   # Key is the name of menu item. If the translation for this item is available, the translated text will be loaded, otherwise the Key name will be used. Key is case-senstive.
@@ -132,11 +132,11 @@ theme_config:
   # When running the site in a subdirectory (e.g. yoursite.com/blog), remove the leading slash from link value (/archives -> archives).
   # External url should start with http:// or https://
   menu:
-    home: / || home
-    about: /about/ || user
-    tags: /tags/ || tags
-    categories: /categories/ || th
-    archives: /archives/ || archive
+    home: / || fa fa-home
+    about: /about/ || fa fa-user
+    tags: /tags/ || fa fa-tags
+    categories: /categories/ || fa fa-th
+    archives: /archives/ || fa fa-archive
     #schedule: /schedule/ || calendar
     #sitemap: /sitemap.xml || sitemap
     #commonweal: /404/ || heartbeat
