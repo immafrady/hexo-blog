@@ -146,6 +146,10 @@ theme_config:
     icons: true
     badges: true
 
+  # Post meta display settings
+  post_meta:
+    updated_at: false
+
   # Sidebar Avatar
   avatar:
     # Replace the default image and set the url here.
