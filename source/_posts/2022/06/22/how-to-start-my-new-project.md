@@ -1,12 +1,12 @@
 ---
 title: Electron小工具！我的选型之路
-date: 2022-06-04 22:00:13
 tags:
-- NodeJS
-- Go
-- Python
-  categories:
-- Coding
+  - NodeJS
+  - Go
+  - Python 
+categories:
+  - Coding
+date: 2022-06-22 22:00:13
 ---
 
 前些日子，开周会时，leader提到了要给公司内部人员做个小工具，他说"后端代码已经写好了，前端弄个界面就好了"  
