@@ -81,7 +81,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a></li>
   </ul>
 </nav>
 
@@ -126,7 +126,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -137,7 +137,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -189,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2022/06/24/tips-of-git-submodule/">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2022/06/22/how-to-start-my-new-project/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/24/tips-of-git-submodule/" class="post-title-link" itemprop="url">Git Submodule的一点点小心得</a>
+          <a href="/2022/06/22/how-to-start-my-new-project/" class="post-title-link" itemprop="url">Electron小工具！我的选型之路</a>
         </h2>
 
         <div class="post-meta-container">
@@ -218,7 +218,129 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-06-24 19:54:48" itemprop="dateCreated datePublished" datetime="2022-06-24T19:54:48+08:00">2022-06-24</time>
+      <time title="创建时间：2022-06-22 22:00:13" itemprop="dateCreated datePublished" datetime="2022-06-22T22:00:13+08:00">2022-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前些日子，开周会时，leader提到了要给公司内部人员做个小工具，他说”后端代码已经写好了，前端弄个界面就好了”<br>有幸见识过后端为了完成任务所写的简单页面，那简直惨不忍睹……<br>但是，这么好的机会，不拿来练手简直说不过去！</p>
+<p>于是我当即提出，”如果是小工具的话，可以试试使用Electron”</p>
+<p>理由如下</p>
+<blockquote>
+<ul>
+<li>鉴于现在服务器上同时在跑的服务太多了，做成客户端可以减轻服务器的压力</li>
+</ul>
+</blockquote>
+<p>leader觉得问题不大，就让我去调研了</p>
+<h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><p>客户端选型： Typescript + Electron + Vue3 + NaiveUI</p>
+<p>这里推荐一下模版仓库<a target="_blank" rel="noopener" href="https://github.com/Deluze/electron-vue-template">Deluze / electron-vue-template</a>，在它的帮助之下项目很快就搭建起来了。<br>而且它的项目文件放得非常规整，启动逻辑清晰易懂，很适合拿来学习Electron项目。<br>也很适合拿来魔改成”Electron + Angular/React”。<br>同时得益于它的<code>electron-builder</code>配置非常完善，可以有效缩短了客户端开发中最难的一步：”打包/编译/发布”的踩坑时间</p>
+<h3 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h3><p>在看了看了最初的demo之后，leader觉得不错，想叫我和他前后端联调一下。<br>我转念一想，既然客户端能做，那后端那一块应该也能做进客户端里～</p>
+<p>于是使用<code>git submodule</code>，把后端python代码也拖进项目来，改了一下启动脚本。通过node <code>child_process</code>拉起了python脚本，发现运行情况十分良好。</p>
+<p>于是折腾一下打包，不试不知道，一试吓一跳。<br>使用pyinstaller打包python项目，在我的黑苹果上，竟然跑了40分钟才把可执行文件打包出来，而且打出来的包，竟然去到了200Mb！！<br>要知道electron自身也要用掉将将200M的空间。</p>
+<p>与此同时，leader也在自己电脑那里试了下另一种打包方式：python源码不压缩，但把整个python环境打包进去。<br>这一通操作下来，打包时间的确减少了，5分钟解决战斗，可是大小还是200Mb左右……</p>
+<p>这一条路： Dead End</p>
+<h3 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h3><p>后端的工作实际上仅仅是数据库查找，然后数据归类而已。<br>这种简单的工作，python能做，nodejs照样能做！</p>
+<p>心动不如行动，立刻着手后端代码整改～<br>很快搞定！ 甚至把与python后端的http请求交互，改造成了electron的ipc调用，降低了程序被抓取数据的风险～</p>
+<p>leader表示很满意，但也提出：”因为是从客户端去调用数据库，所以代码加密防止凭证泄漏是很重要的”</p>
+<p>于是乎调研的重点变成了如何加密nodejs代码</p>
+<ul>
+<li>一开始以为它打包出来的asar文件无懈可击，但是直接使用npm包”asar”就能解压缩，简直就像裸奔</li>
+<li>代码混淆，可是最关键的数据库用户名密码那些，还是字符串，无法被混淆，按照特征还是能找出来的</li>
+</ul>
+<p>后来翻到一篇不错的文章<a target="_blank" rel="noopener" href="https://juejin.cn/post/6968291704071782430">《基于 Node.js Addon 和 v8 字节码的 Electron 代码保护解决方案》</a>，基本上思路很清晰了。</p>
+<p>感觉v8字节码是个很不错的思路，但文章也提到了它的局限性</p>
+<blockquote>
+<h4 id="在代码保护上的局限"><a href="#在代码保护上的局限" class="headerlink" title="在代码保护上的局限"></a>在代码保护上的局限</h4><p>v8 字节码不保护字符串，如果我们在 JS 代码中写死了一些数据库的密钥等信息，只要将 v8 字节码作为字符串阅读，还是能直接看到这些字符串内容的。当然，简单一点的方法就是使用 Binary 形式的非字符串密钥。</p>
+</blockquote>
+<p>如此以来折腾的成本大大提升，该如何是好呢？</p>
+<h3 id="Day4"><a href="#Day4" class="headerlink" title="Day4"></a>Day4</h3><p>突然想到，既然能用python，那就也能用别的语言做后台～<br>于是想到了Go，毕竟相比python，Go小而美哈哈。<br>leader还问我”那为啥不用Rust”，我说rust不会……😅</p>
+<p>一通折腾下，用Go复刻了一下代码逻辑，再用gRPC和Electron端进行交互，最后修改了一下启动脚本。<br>完美，Go打包出来的源码大小只有14Mb，gRPC的通信也不太容易抓包分析，更重要的是Go逆向工程是需要点时间的，只要别人不知道我是用Go写的，估计也一时半会不太能下得去手。</p>
+<p>于是乎主方案确定了：</p>
+<ul>
+<li>Go： 负责数据库交互</li>
+<li>Electron(主进程)： 使用gRPC远程调用，从Go获取数据</li>
+<li>Electron(渲染进程)：使用ipc与主进程进行交互</li>
+</ul>
+<p>至此，方案确定，正式进入开发</p>
+<h3 id="一点小坑"><a href="#一点小坑" class="headerlink" title="一点小坑"></a>一点小坑</h3><p>一开始，我打算把Go二进制文件直接复制进resource里一起打包的，但是当它被塞进asar压缩包之后，诡异的事情发生了。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; app &#125; <span class="keyword">from</span> <span class="string">&#x27;electron&#x27;</span></span><br><span class="line"><span class="keyword">import</span> childProcess <span class="keyword">from</span> <span class="string">&#x27;child_process&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LOCATION = path.join(app.getAppPath(), <span class="string">&#x27;bin&#x27;</span>, <span class="string">&#x27;main.exe&#x27;</span>)</span><br><span class="line">goProcess = childProcess.spawn(GO)</span><br></pre></td></tr></table></figure>
+<p>此时无法从子进程拉起Go……</p>
+<p>后来找到了问题的原因，跟这个问答高度相似 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63264606/electron-app-shows-child-process-error-and-it-doesnt-work">Electron app shows child process error and it doesn’t work</a></p>
+<p>最后，把存放二进制的文件夹排除掉，才得以解决</p>
+<h3 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h3><p>这个工具开发好了之后，打算用Flutter去重构一遍～<br>毕竟最近Flutter支持了全平台，怎么也得试着玩一下的对吧～</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2022/06/04/tips-of-git-submodule/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Frady Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FRADY SPACE">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | FRADY SPACE">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/06/04/tips-of-git-submodule/" class="post-title-link" itemprop="url">Git Submodule的一点点小心得</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-04 19:54:48" itemprop="dateCreated datePublished" datetime="2022-06-04T19:54:48+08:00">2022-06-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
