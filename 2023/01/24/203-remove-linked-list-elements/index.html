@@ -21,30 +21,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.fradyspace.wang","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="麻了 麻了 第一季度，国内基金大幅套牢不说。 偶然的机会，发现因俄乌战争我的南方原油LOF竟然回本了～🤣 于是借着”基金转托管”的方式，把支付宝的场外基金转入了东方财富的场内，正式开始了我的炒股之路。当然，小成本，买股票要5元手续费不值得，于是就买起了场内基金。 小试牛刀一开始还不错，南方原油LOF的收益都去到了60%，还想着能继续涨呢～回调也不虚的，反正能对冲掉平时加油的钱，何乐不为～ 看着涨">
+    <meta name="description" content="203.移除链表元素  给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。  这一题是基础的链表操作题～ 1. 最基础的做法123456789101112131415161718192021222324252627&#x2F;** * Definition for singly-linked list. * type">
 <meta property="og:type" content="article">
-<meta property="og:title" content="入市需谨慎🥲">
-<meta property="og:url" content="https://www.fradyspace.wang/2022/04/01/damn-you-stock/index.html">
+<meta property="og:title" content="203.移除链表元素">
+<meta property="og:url" content="https://www.fradyspace.wang/2023/01/24/203-remove-linked-list-elements/index.html">
 <meta property="og:site_name" content="自个儿的小空间">
-<meta property="og:description" content="麻了 麻了 第一季度，国内基金大幅套牢不说。 偶然的机会，发现因俄乌战争我的南方原油LOF竟然回本了～🤣 于是借着”基金转托管”的方式，把支付宝的场外基金转入了东方财富的场内，正式开始了我的炒股之路。当然，小成本，买股票要5元手续费不值得，于是就买起了场内基金。 小试牛刀一开始还不错，南方原油LOF的收益都去到了60%，还想着能继续涨呢～回调也不虚的，反正能对冲掉平时加油的钱，何乐不为～ 看着涨">
+<meta property="og:description" content="203.移除链表元素  给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val &#x3D;&#x3D; val 的节点，并返回 新的头节点 。  这一题是基础的链表操作题～ 1. 最基础的做法123456789101112131415161718192021222324252627&#x2F;** * Definition for singly-linked list. * type">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.fradyspace.wang/2022/04/01/damn-you-stock/jiucai.jpeg">
-<meta property="article:published_time" content="2022-04-01T01:54:28.000Z">
-<meta property="article:modified_time" content="2023-01-24T17:22:08.436Z">
+<meta property="article:published_time" content="2023-01-24T09:46:45.000Z">
+<meta property="article:modified_time" content="2023-01-24T17:22:08.440Z">
 <meta property="article:author" content="Frady Wang">
-<meta property="article:tag" content="Stock">
+<meta property="article:tag" content="Go">
+<meta property="article:tag" content="Leetcode">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.fradyspace.wang/2022/04/01/damn-you-stock/jiucai.jpeg">
 
 
-<link rel="canonical" href="https://www.fradyspace.wang/2022/04/01/damn-you-stock/">
+<link rel="canonical" href="https://www.fradyspace.wang/2023/01/24/203-remove-linked-list-elements/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.fradyspace.wang/2022/04/01/damn-you-stock/","path":"2022/04/01/damn-you-stock/","title":"入市需谨慎🥲"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.fradyspace.wang/2023/01/24/203-remove-linked-list-elements/","path":"2023/01/24/203-remove-linked-list-elements/","title":"203.移除链表元素"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>入市需谨慎🥲 | 自个儿的小空间</title>
+<title>203.移除链表元素 | 自个儿的小空间</title>
   
 
 
@@ -120,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E8%AF%95%E7%89%9B%E5%88%80"><span class="nav-number">1.</span> <span class="nav-text">小试牛刀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B0%E7%81%AB%E5%85%A5%E9%AD%94"><span class="nav-number">2.</span> <span class="nav-text">走火入魔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%8A%E5%95%8A%E5%95%8A"><span class="nav-number">3.</span> <span class="nav-text">啊啊啊</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%80%E5%9F%BA%E7%A1%80%E7%9A%84%E5%81%9A%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">1. 最基础的做法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8A%8A%E5%A4%B4%E9%83%A8%E5%90%88%E5%B9%B6%E5%A4%84%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">2. 把头部合并处理</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -199,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2022/04/01/damn-you-stock/">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2023/01/24/203-remove-linked-list-elements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -212,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="入市需谨慎🥲 | 自个儿的小空间">
+      <meta itemprop="name" content="203.移除链表元素 | 自个儿的小空间">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          入市需谨慎🥲
+          203.移除链表元素
         </h1>
 
         <div class="post-meta-container">
@@ -228,7 +227,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-04-01 09:54:28" itemprop="dateCreated datePublished" datetime="2022-04-01T09:54:28+08:00">2022-04-01</time>
+      <time title="创建时间：2023-01-24 17:46:45" itemprop="dateCreated datePublished" datetime="2023-01-24T17:46:45+08:00">2023-01-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -236,7 +235,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Chat/" itemprop="url" rel="index"><span itemprop="name">Chat</span></a>
+          <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
         </span>
     </span>
 
@@ -250,34 +249,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>麻了 麻了</p>
-<p>第一季度，国内基金大幅套牢不说。</p>
-<p>偶然的机会，发现因俄乌战争我的<code>南方原油LOF</code>竟然回本了～🤣</p>
-<p>于是借着”基金转托管”的方式，把支付宝的场外基金转入了东方财富的场内，正式开始了我的炒股之路。<br>当然，小成本，买股票要5元手续费不值得，于是就买起了场内基金。</p>
-<h2 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h2><p>一开始还不错，<code>南方原油LOF</code>的收益都去到了60%，还想着能继续涨呢～<br>回调也不虚的，反正能对冲掉平时加油的钱，何乐不为～</p>
-<p>看着涨势不错，甚至还想额外投机一点进去</p>
-<p>于是打了钱，买了<code>纳斯达克ETF</code>，不到几天时间就赚了500。</p>
-<p>想着哎呀妈呀，这也太容易了吧～</p>
-<h2 id="走火入魔"><a href="#走火入魔" class="headerlink" title="走火入魔"></a>走火入魔</h2><p>正好发现了原油股和原油期货有着正相关的关系。</p>
-<p>因为有时候情绪会延迟，会出现涨幅没跟上，或者涨太多。</p>
-<p>也就是说，<strong>有套利的机会！</strong></p>
-<p>那几天都特别得激动，时不时看盘，就想着能不能抓机会上车。</p>
-<p>我还试了几次挂单，然后感觉不对劲又撤单。</p>
-<p>结果，最后玩脱了。</p>
-<p>撤单不及时， 1.63的价格，买入了<code>嘉实原油LOF</code>。</p>
-<p>买完立刻就崩了，真的是立刻。</p>
-<p>我欲哭无泪。</p>
-<p>当天还短暂回到了1.636但是，没有把握住这个机会，收盘一泻千里。</p>
-<p>接下来的几天，每天都按照3%的幅度跌下去……</p>
-<h2 id="啊啊啊"><a href="#啊啊啊" class="headerlink" title="啊啊啊"></a>啊啊啊</h2><p>早上看到新闻 <a target="_blank" rel="noopener" href="https://finance.eastmoney.com/a/202204012330139850.html">《美国历史最大规模石油储备释放！拜登：每天增加释放100万桶石油 持续六个月》</a></p>
-<p>终于今天崩不住，上班路上，竞价挂了一个当前价格。</p>
-<p>没过一会，开盘，直接低开拉高……</p>
-<p>我tm，卖在了最低点</p>
-<p>总说情绪情绪<br>总想操控情绪</p>
-<p>最后，我才是那个被操控的人？</p>
-<p><img src="/2022/04/01/damn-you-stock/jiucai.jpeg">  </p>
-<center>⬆️分享一下我的账户名吧⬆️</center>
-
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/">203.移除链表元素</a></p>
+<blockquote>
+<p>给你一个链表的头节点 <code>head</code> 和一个整数 <code>val</code> ，请你删除链表中所有满足 <code>Node.val == val</code> 的节点，并返回 新的头节点 。</p>
+</blockquote>
+<p>这一题是基础的链表操作题～</p>
+<h4 id="1-最基础的做法"><a href="#1-最基础的做法" class="headerlink" title="1. 最基础的做法"></a>1. 最基础的做法</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeElements</span><span class="params">(head *ListNode, val <span class="keyword">int</span>)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> head != <span class="literal">nil</span> &amp;&amp; head.Val == val &#123;</span><br><span class="line">		head = head.Next</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> head == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	curr, prev := head.Next, head</span><br><span class="line">	<span class="keyword">for</span> curr != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> curr.Val == val &#123;</span><br><span class="line">			prev.Next = curr.Next</span><br><span class="line">			curr = prev.Next</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			prev = prev.Next</span><br><span class="line">			curr = curr.Next</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先想到的是，特殊处理头部，但是很不优雅</p>
+<h4 id="2-把头部合并处理"><a href="#2-把头部合并处理" class="headerlink" title="2. 把头部合并处理"></a>2. 把头部合并处理</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeElements</span><span class="params">(head *ListNode, val <span class="keyword">int</span>)</span> *<span class="title">ListNode</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	dummy := &amp;ListNode&#123;Next: head&#125;</span><br><span class="line">	<span class="keyword">for</span> cur := dummy; cur.Next != <span class="literal">nil</span>; &#123;</span><br><span class="line">		<span class="keyword">if</span> cur.Next.Val == val &#123;</span><br><span class="line">			cur.Next = cur.Next.Next</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			cur = cur.Next</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在头部之前插入一个起点节点，这样包含head的全部节点，都可以使用相同的逻辑进行处理了</p>
 
     </div>
 
@@ -287,21 +267,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Stock/" rel="tag"># Stock</a>
+              <a href="/tags/Go/" rel="tag"># Go</a>
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/03/31/something-happened/" rel="prev" title="粗事情了！">
-                  <i class="fa fa-chevron-left"></i> 粗事情了！
+                <a href="/2022/09/02/vue-jsx-explore-1/" rel="prev" title="Vue Jsx 踩坑记录 （一）">
+                  <i class="fa fa-chevron-left"></i> Vue Jsx 踩坑记录 （一）
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/02/share-happiness/" rel="next" title="分享喜悦！">
-                  分享喜悦！ <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
