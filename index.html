@@ -84,7 +84,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li>
   </ul>
 </nav>
 
@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -140,7 +140,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -183,6 +183,126 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2023/02/01/first-try-on-hacking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Frady Wang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自个儿的小空间">
+      <meta itemprop="description" content="🧩碎片化记录">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 自个儿的小空间">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/01/first-try-on-hacking/" class="post-title-link" itemprop="url">网络"推理"初尝试</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-01 23:50:08" itemprop="dateCreated datePublished" datetime="2023-02-01T23:50:08+08:00">2023-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>因为那天要上网找学习资料，所以翻了不少资料网站。<br>大部份网站都需要会员，但却有一个网站，提供了很多免费的资源，但一些答案是需要付费才能查看答案的。  </p>
+<p>这个网站，比较特别，说输入购买和查看都不需要注册，直接输入手机号即可。</p>
+<p>点进请求，发现是一个很简单的post请求，查询条件是个很基础的结构（类似这样⬇️）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 123, // 这个字段是读取用户输入的&quot;手机号&quot;</span><br><span class="line">  &quot;catId&quot;: 1, // 随页面带过来的</span><br><span class="line">  &quot;id&quot;: 1 // 随页面带过来的</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种结构很明显就看出来，<code>catId</code>和<code>id</code>是索引这个页面内容的关键字段</p>
+<ul>
+<li><code>catId</code> 应该是分类的id</li>
+<li><code>id</code> 则是对应文章的id</li>
+</ul>
+<p>这是脑子里面有一个大胆的想法就冒出来了</p>
+<h1 id="阴差阳错的第一次思路"><a href="#阴差阳错的第一次思路" class="headerlink" title="阴差阳错的第一次思路"></a>阴差阳错的第一次思路</h1><p>因为现在欠缺的仅仅是<code>code</code>字段而已，是否穷举就能把码试出来了呢？</p>
+<p>心动不如行动，正好想练习一下Go，于是就拿Go来写一个简单请求了</p>
+<p>但是代码不是很成功，一直报错，<code>接口返回了SQL的报错信息</code>，一看那几个值压根就没传过去呀！</p>
+<p>检查了一下发现是<code>http.Post</code>和<code>http.PostForm</code>的区别，前者的传参会出现在url上，而接口接受的body里面的json，因此后端没能接收到参数</p>
+<p>慢着？接口的响应竟然清晰地把SQL显示在了我面前，岂不是说明对方的后端服务是没有做什么防御措施？</p>
+<h1 id="方向明确的第二次尝试"><a href="#方向明确的第二次尝试" class="headerlink" title="方向明确的第二次尝试"></a>方向明确的第二次尝试</h1><p>当知道对方服务器对SQL注入没有防备时，觉得机会来了。毕竟穷举法效率低，一不小心还会DDOS服务器被察觉。</p>
+<p>首先对方的SQL结构是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> xxx.xxx <span class="keyword">WHERE</span> code <span class="operator">=</span> <span class="string">&#x27;?&#x27;</span> <span class="keyword">AND</span> catId <span class="operator">=</span> ? <span class="keyword">AND</span> id <span class="operator">=</span> ? <span class="keyword">AND</span> other_condition <span class="operator">=</span> xxx <span class="keyword">ORDER</span> <span class="keyword">BY</span> id <span class="keyword">DESC</span> LIMIT <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>可以注入的点位就是接口展示的那几个。</p>
+<p>首先我尝试了拼接SQL。</p>
+<p>就是传参的时候加上<code>;</code>，看看能否拼接一个插入语句进去，但是一直报错说SQL不正确</p>
+<p>跟着就继续翻阅资料。</p>
+<p>发现了一种神奇的方式，那就是通过注解把后边的SQL给取消掉！</p>
+<p>于是在最后的一个参数上，拼接了<code>OR 1 = 1 #</code>，成功了！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 123,</span><br><span class="line">  &quot;catId&quot;: 1,</span><br><span class="line">  &quot;id&quot;: &#x27;1 OR 1 = 1 #&#x27; // 传参改成了这样</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 构成的<span class="keyword">SQL</span>长这样</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> xxx.xxx <span class="keyword">WHERE</span> code <span class="operator">=</span> <span class="string">&#x27;123&#x27;</span> <span class="keyword">AND</span> catId <span class="operator">=</span> <span class="number">1</span> <span class="keyword">AND</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">OR</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span> # <span class="keyword">AND</span> other_condition <span class="operator">=</span> xxx <span class="keyword">ORDER</span> <span class="keyword">BY</span> id <span class="keyword">DESC</span> LIMIT <span class="number">1</span>; </span><br></pre></td></tr></table></figure>
+
+<p>借此，成功获取到了隐藏内容！</p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>因为虽然通过接口拿到了隐藏内容，但这样去下载还是不太方便。如果能在页面上按照原有的逻辑，把内容显示出来，岂不妙哉？</p>
+<p>于是我试着直接修改页面上的javascript，把id赋值的地方改为上面的内容，但执行的时候却失败了，没有任何变化。</p>
+<p>这里就涉及到了一个知识点，所有的代码都在页面加载的时候就写进了内存了。因此后面的改变并不会影响到原有代码的执行。</p>
+<p>但这还不简单吗？</p>
+<p>直接打个断点，把内存的值给修改掉不就得了！</p>
+<p>事实证明，断点时的确是能够改值的。</p>
+<p>至此，一次简单的”黑客”就完成了</p>
+<h1 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h1><p>如果是我本人的网站，安全上绝对不能做得如此漏洞百出！</p>
+<p>个人感觉至少有三点可以进行优化：</p>
+<ul>
+<li>业务上，购买等请求要带上cookie，追踪操作请求</li>
+<li>业务上，对外暴露的接口，不要把核心信息明文暴露出来，请求内容使用非对称加密并要加上时间戳验证</li>
+<li>实现上，使用现代web框架，避免SQL注入</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1087,93 +1207,6 @@
 <li><input disabled="" type="checkbox"> 学习摄影，把女朋友拍得美美的！</li>
 </ul>
 <p>哈哈哈，不知道一年下来能能完成几个呢？</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.fradyspace.wang/2021/11/23/odd-things-happened/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Frady Wang">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="自个儿的小空间">
-      <meta itemprop="description" content="🧩碎片化记录">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 自个儿的小空间">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/23/odd-things-happened/" class="post-title-link" itemprop="url">奇怪的事情发生了</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-23 10:54:13" itemprop="dateCreated datePublished" datetime="2021-11-23T10:54:13+08:00">2021-11-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Coding/" itemprop="url" rel="index"><span itemprop="name">Coding</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>前些天提到的git+ssh形式，本以为CI已经解决了ssh的身份鉴权问题。</p>
-<p>没想到一升级版本号，立刻又抛错！</p>
-<p>简直无语😓</p>
-<p><img src="/2021/11/23/odd-things-happened/error.png"></p>
-<p>结果，运维折腾了一下。</p>
-<p>发现删了package-lock.json中和组件相关的描述，就没问题了……</p>
-<p>这也挺奇葩的，因为一旦有lock，哪怕它之前成功，接下来也没办法成功了。</p>
-<p>后来，运维又发现，额，用yarn就没事了。</p>
-<p>震惊我一百年。</p>
-<p>虽然明白yarn和npm的安装是有区别的，可这差异也太大了吧。</p>
 
       
     </div>
